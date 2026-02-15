@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /ngo/
+    
+    # Allow real files and directories through
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+    
+    # Route everything else through index.php with path parameter
+    RewriteRule ^(.*)$ index.php?path=$1 [QSA,L]
+</IfModule>
