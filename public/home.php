@@ -35,9 +35,9 @@ include __DIR__ . '/header.php';
                     <a href="<?php echo base_url('members'); ?>" class="border border-green-600 text-green-700 px-5 py-3 rounded-lg hover:bg-green-50 transition font-medium">Join Us</a>
                 </div>
             </div>
-            <div class="w-full md:w-1/2" data-reveal>
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-                    <img src="<?php echo asset_url('assets/hero-placeholder.jpg'); ?>" alt="Youth program" class="w-full h-64 object-cover">
+            <div class="w-full md:w-1/2 rotate-y-90" data-reveal>
+                <div class="bg-white  overflow-hidden shadow-lg w-[250px] h-[200px] p-4 ">
+                    <img src="<?php echo asset_url('uploads/heroImage.png'); ?>" alt="Youth program" class="w-full object-center ">
                 </div>
             </div>
         </div>
