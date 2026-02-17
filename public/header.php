@@ -56,6 +56,7 @@ function nav_link_class($route, $is_mobile = false) {
   <meta name="description" content="<?php echo e(get_setting('site_description', 'Empowering youth through education and community projects')); ?>">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="<?php echo asset_url('assets/animations.css'); ?>">
   <script src="<?php echo asset_url('assets/app.js'); ?>" defer></script>
   <title><?php echo isset($page_title) ? e($page_title) . ' - ' . e($site_name) : e($site_name); ?></title>
