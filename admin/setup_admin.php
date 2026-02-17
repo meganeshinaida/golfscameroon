@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (!empty($success)): ?>
             <div class="bg-green-50 border border-green-200 text-green-800 p-4 rounded-lg mb-6">
                 <strong>✓ Success!</strong> <?php echo e($success); ?>
-                <p class="text-sm mt-2">You can now <a href="login.php" class="underline font-semibold">login here</a>.</p>
+                <p class="text-sm mt-2">You can now <a href="<?php echo base_url('admin/login'); ?>" class="underline font-semibold">login here</a>.</p>
             </div>
         <?php endif; ?>
         

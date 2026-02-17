@@ -1,8 +1,31 @@
 <?php
-require_once __DIR__ . '/layout.php';
+require_once __DIR__ . '/../config/helpers.php';
+require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../models/Project.php';
 
+if (session_status() == PHP_SESSION_NONE) session_start();
+if (!isset($_SESSION['user_id'])) {
+  header('Location: login.php');
+  exit;
+}
+
 $projectModel = new Project();
+
+// Handle CSV export BEFORE layout (before any output)
+if (!empty($_GET['export']) && $_GET['export'] === 'csv') {
+    $all = $projectModel->all() ?? [];
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename="projects.csv"');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    $out = fopen('php://output', 'w');
+    fputcsv($out, ['id','name','target_amount','payment_link','created_at']);
+    foreach ($all as $r) fputcsv($out, [$r['id'],$r['name'],$r['target_amount'],$r['payment_link'],$r['created_at']]);
+    fclose($out); exit;
+}
+
+// Now include layout after export check
+require_once __DIR__ . '/layout.php';
 
 // Individual delete
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_action']) && $_POST['_action'] === 'delete') {
@@ -26,17 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_action']) && $_POST[
     }
 }
 
-// Export CSV
-if (!empty($_GET['export']) && $_GET['export'] === 'csv') {
-    $all = $projectModel->all();
-    header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="projects.csv"');
-    $out = fopen('php://output', 'w');
-    fputcsv($out, ['id','name','target_amount','payment_link','created_at']);
-    foreach ($all as $r) fputcsv($out, [$r['id'],$r['name'],$r['target_amount'],$r['payment_link'],$r['created_at']]);
-    fclose($out); exit;
-}
-
 // Pagination
 $page = max(1, (int)($_GET['page'] ?? 1));
 $perPage = 10;
@@ -48,7 +60,7 @@ $pages = (int)ceil($total / $perPage);
 <div class="flex items-center justify-between mb-4">
   <h2 class="text-xl font-semibold text-gray-800">Projects</h2>
   <div class="flex gap-2">
-    <a href="project_form.php" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-medium"><i class="bi bi-plus-circle"></i> New Project</a>
+    <a href="<?php echo base_url('admin/project-form'); ?>" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-medium"><i class="bi bi-plus-circle"></i> New Project</a>
     <a href="?export=csv" class="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition font-medium"><i class="bi bi-download"></i> Export CSV</a>
   </div>
 </div>
@@ -79,7 +91,7 @@ $pages = (int)ceil($total / $perPage);
             <td class="p-3"><?php echo number_format($p['target_amount'],2); ?></td>
             <td class="p-3"><?php echo e($p['created_at']); ?></td>
             <td class="p-3">
-              <a class="text-green-600 hover:underline font-medium mr-3" href="project_form.php?id=<?php echo e($p['id']); ?>"><i class="bi bi-pencil-square"></i> Edit</a>
+              <a class="text-green-600 hover:underline font-medium mr-3" href="<?php echo base_url('admin/project-form') . '?id=' . e($p['id']); ?>"><i class="bi bi-pencil-square"></i> Edit</a>
               <form method="post" style="display:inline" onsubmit="return confirm('Delete project?')">
                 <input type="hidden" name="_csrf" value="<?php echo csrf_token(); ?>">
                 <input type="hidden" name="_action" value="delete">

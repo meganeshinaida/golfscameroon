@@ -1,8 +1,22 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteBase /ngo/
     
-    # Rewrite all requests to public folder but don't change the visible URL
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
+    # Don't rewrite if it's a real file or directory
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+    
+    # Hide .php extension for admin pages - map clean URLs to .php files
+    # admin/dashboard -> admin/dashboard.php
+    RewriteRule ^admin/([a-z-]+)/?$ admin/$1.php [L,QSA]
+    
+    # admin/project-form -> admin/project_form.php
+    # admin/member-form -> admin/member_form.php
+    # admin/blog-form -> admin/blog_form.php
+    RewriteRule ^admin/([a-z]+)-([a-z]+)/?$ admin/$1_$2.php [L,QSA]
+    
+    # Rewrite all other requests to public folder (but not admin)
+    RewriteCond %{REQUEST_URI} !^/ngo/admin
     RewriteRule ^(.*)$ public/index.php?path=$1 [QSA,L]
 </IfModule>

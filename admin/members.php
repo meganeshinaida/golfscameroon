@@ -37,7 +37,7 @@ if (!empty($_GET['export']) && $_GET['export'] === 'csv') {
 <div class="flex items-center justify-between mb-4">
   <h2 class="text-xl font-semibold text-gray-800">Members</h2>
   <div class="flex gap-2">
-    <a href="member_form.php" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-medium"><i class="bi bi-plus-circle"></i> New Member</a>
+    <a href="<?php echo base_url('admin/member-form'); ?>" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-medium"><i class="bi bi-plus-circle"></i> New Member</a>
     <a href="?export=csv" class="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition font-medium"><i class="bi bi-download"></i> Export CSV</a>
   </div>
 </div>
@@ -85,7 +85,7 @@ if (!empty($_GET['export']) && $_GET['export'] === 'csv') {
           </div>
         </div>
         <div class="mt-3">
-          <a class="text-green-600 hover:underline font-medium mr-3" href="member_form.php?id=<?php echo e($m['id']); ?>"><i class="bi bi-pencil-square"></i> Edit</a>
+          <a class="text-green-600 hover:underline font-medium mr-3" href="<?php echo base_url('admin/member-form') . '?id=' . e($m['id']); ?>"><i class="bi bi-pencil-square"></i> Edit</a>
           <form method="post" style="display:inline" onsubmit="return confirm('Delete member?')">
             <input type="hidden" name="_csrf" value="<?php echo csrf_token(); ?>">
             <input type="hidden" name="_action" value="delete">

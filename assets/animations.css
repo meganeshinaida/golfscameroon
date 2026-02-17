@@ -1,0 +1,249 @@
+/* Global Animation Styles for NGO Website */
+
+/* Page Fade-In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes adminFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide Up Animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulse Animation for Notifications */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Apply fade-in to body */
+.animation-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.admin-page-animation {
+  animation: adminFadeIn 0.6s ease-in-out;
+}
+
+/* Smooth transitions for all interactive elements */
+a,
+button,
+input,
+textarea,
+select {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Navigation link transitions */
+nav a {
+  position: relative;
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+nav a:hover {
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card hover effects */
+.admin-card {
+  transition: all 0.3s ease-in-out;
+}
+
+.admin-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Form element focus animations */
+input:focus,
+textarea:focus,
+select:focus {
+  transform: scale(1.01);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Button animations */
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Progress bar animation */
+.bg-green-500 {
+  transition: width 0.5s ease-in-out;
+}
+
+/* Table row hover effects */
+tbody tr {
+  transition: background-color 0.2s ease-in-out;
+}
+
+tbody tr:hover {
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+/* Icon animations */
+i {
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+button:hover i,
+a:hover i {
+  transform: scale(1.1);
+}
+
+/* Notification pulse */
+.notification-badge {
+  animation: pulse 2s infinite;
+}
+
+/* Link underline animation */
+a.nav-link {
+  position: relative;
+  text-decoration: none;
+}
+
+a.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease-in-out;
+}
+
+a.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Smooth color transitions */
+.text-green-600,
+.text-green-700,
+.text-red-600,
+.bg-green-600,
+.bg-green-700,
+.bg-red-600 {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Dropdown animation */
+.dropdown-menu {
+  animation: slideUp 0.3s ease-in-out;
+  transform-origin: top;
+}
+
+/* Staggered animation delays for multiple elements */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+/* Modal animations */
+.modal-fade {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-backdrop {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Prevent animations for users with reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Bounce animation for CTAs */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}

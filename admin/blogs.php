@@ -1,8 +1,31 @@
 <?php
-require_once __DIR__ . '/layout.php';
+require_once __DIR__ . '/../config/helpers.php';
+require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../models/Blog.php';
 
+if (session_status() == PHP_SESSION_NONE) session_start();
+if (!isset($_SESSION['user_id'])) {
+  header('Location: login.php');
+  exit;
+}
+
 $model = new Blog();
+
+// Handle CSV export BEFORE layout (before any output)
+if (!empty($_GET['export']) && $_GET['export'] === 'csv') {
+    $allPosts = $model->all() ?? [];
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename="blogs.csv"');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    $out = fopen('php://output','w');
+    fputcsv($out, ['id','title','author','created_at']);
+    foreach ($allPosts as $p) fputcsv($out, [$p['id'],$p['title'],$p['author'] ?? '',$p['created_at']]);
+    fclose($out); exit;
+}
+
+// Now include layout after export check
+require_once __DIR__ . '/layout.php';
 
 // handle delete
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['_action'] ?? '') === 'delete') {
@@ -23,21 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['_action'] ?? '') === 'bulk
   if (!verify_csrf($_POST['_csrf'] ?? '')) { $msg = 'Invalid CSRF token'; }
   else { $ids = $_POST['ids'] ?? []; foreach ($ids as $id) $model->delete((int)$id); $msg = 'Selected deleted'; }
 }
-// export CSV
-if (!empty($_GET['export']) && $_GET['export'] === 'csv') {
-    $allPosts = $model->all();
-    header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="blogs.csv"');
-    $out = fopen('php://output','w');
-    fputcsv($out, ['id','title','author','created_at']);
-    foreach ($allPosts as $p) fputcsv($out, [$p['id'],$p['title'],$p['author'] ?? '',$p['created_at']]);
-    fclose($out); exit;
-}
 ?>
 <div class="flex items-center justify-between mb-4">
   <h2 class="text-xl font-semibold text-gray-800">Blog Posts</h2>
   <div class="flex gap-2">
-    <a href="blog_form.php" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-medium"><i class="bi bi-plus-circle"></i> New Post</a>
+    <a href="<?php echo base_url('admin/blog-form'); ?>" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-medium"><i class="bi bi-plus-circle"></i> New Post</a>
     <a href="?export=csv" class="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition font-medium"><i class="bi bi-download"></i> Export CSV</a>
   </div>
 </div>
@@ -66,7 +79,7 @@ if (!empty($_GET['export']) && $_GET['export'] === 'csv') {
           <td class="p-3"><?php echo e($p['author'] ?? ''); ?></td>
           <td class="p-3"><?php echo e($p['created_at']); ?></td>
           <td class="p-3">
-          <a class="text-green-600 hover:underline font-medium mr-3" href="blog_form.php?id=<?php echo e($p['id']); ?>"><i class="bi bi-pencil-square"></i> Edit</a>
+          <a class="text-green-600 hover:underline font-medium mr-3" href="<?php echo base_url('admin/blog-form') . '?id=' . e($p['id']); ?>"><i class="bi bi-pencil-square"></i> Edit</a>
           <form method="post" style="display:inline" onsubmit="return confirm('Delete post?')">
             <input type="hidden" name="_csrf" value="<?php echo csrf_token(); ?>">
             <input type="hidden" name="_action" value="delete">

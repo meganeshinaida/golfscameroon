@@ -24,19 +24,19 @@ $page_title = 'Home';
 include __DIR__ . '/header.php';
 ?>
     <header class="bg-white border-b border-gray-200">
-        <div class="max-w-6xl mx-auto p-8 md:p-16 flex flex-col md:flex-row items-center gap-8">
-            <div class="flex-1 text-center" data-reveal>
-                <h1 class="text-3xl md:text-5xl font-extrabold leading-tight text-green-700">Empowering Cameroon&apos;s Youth through Education & Opportunity</h1>
+        <div class="max-w-6xl mx-auto p-8 md:p-16 flex flex-col md:flex-row items-center gap-8 animation-fade-in">
+            <div class="flex-1 text-center">
+                <h1 class="text-3xl md:text-5xl font-extrabold leading-tight text-green-700">Empowering Cameroon&apos;s Youth through Education &amp; Opportunity</h1>
                 <p class="mt-4 text-lg md:text-xl text-gray-700">We create mentorship, skill-building, and scholarship programs to unlock potential and build resilient communities aligned with the UN SDGs.</p>
                 <div class="mt-6 flex gap-3 justify-center">
-                    <button onclick="openDonateModal(0, 'General Donation')" class="bg-green-600 text-white px-5 py-3 rounded-lg shadow hover:bg-green-700 transition font-medium">
+                    <button onclick="openDonateModal(0, 'General Donation')" class="bg-green-600 text-white px-5 py-3 rounded-lg shadow hover:bg-green-700 transition duration-300 transform hover:scale-105 font-medium">
                         <i class="bi bi-heart"></i> Donate Now
                     </button>
-                    <a href="<?php echo base_url('members'); ?>" class="border border-green-600 text-green-700 px-5 py-3 rounded-lg hover:bg-green-50 transition font-medium">Join Us</a>
+                    <a href="<?php echo base_url('members'); ?>" class="border border-green-600 text-green-700 px-5 py-3 rounded-lg hover:bg-green-50 transition duration-300 transform hover:scale-105 font-medium">Join Us</a>
                 </div>
             </div>
-            <div class="w-full md:w-1/2" data-reveal>
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+            <div class="w-full md:w-1/2 animation-fade-in" style="animation-delay: 0.1s;">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 hover:shadow-2xl transform hover:scale-105">
                     <img src="<?php echo asset_url('assets/hero-placeholder.jpg'); ?>" alt="Youth program" class="w-full h-64 object-cover">
                 </div>
             </div>
@@ -44,36 +44,36 @@ include __DIR__ . '/header.php';
     </header>
 
     <main class="max-w-6xl mx-auto p-6 space-y-12">
-        <section id="services" class="grid md:grid-cols-3 gap-6" data-reveal>
-            <div class="bg-white p-6 rounded shadow text-center">
+        <section id="services" class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded shadow text-center transition duration-300 hover:shadow-lg transform hover:-translate-y-1">
                 <h3 class="font-semibold text-lg">Community Assistance</h3>
                 <p class="mt-2 text-sm text-gray-600">Direct support, food drives and essential services for vulnerable communities.</p>
             </div>
-            <div class="bg-white p-6 rounded shadow text-center">
+            <div class="bg-white p-6 rounded shadow text-center transition duration-300 hover:shadow-lg transform hover:-translate-y-1">
                 <h3 class="font-semibold text-lg">Youth Mentorship</h3>
                 <p class="mt-2 text-sm text-gray-600">Mentorship connecting youth to professionals and role models.</p>
             </div>
-            <div class="bg-white p-6 rounded shadow text-center">
+            <div class="bg-white p-6 rounded shadow text-center transition duration-300 hover:shadow-lg transform hover:-translate-y-1">
                 <h3 class="font-semibold text-lg">Educational Outreach</h3>
                 <p class="mt-2 text-sm text-gray-600">Workshops, scholarships and learning resources for improved outcomes.</p>
             </div>
         </section>
 
-        <section id="top-projects" data-reveal>
+        <section id="top-projects">
             <div class="flex flex-col items-center justify-center mb-4 text-center">
                 <h2 class="text-2xl font-semibold">Featured Projects</h2>
-                <a href="<?php echo base_url('donations'); ?>" class="text-sm text-green-700 mt-1">See all projects →</a>
+                <a href="<?php echo base_url('donations'); ?>" class="text-sm text-green-700 mt-1 transition duration-300 hover:text-green-800 hover:underline">See all projects →</a>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
                 <?php foreach (array_slice($dbProjects,0,6) as $proj):
                     list($raised,$pct) = project_progress($db, $proj['id'], $proj['target_amount']);
                 ?>
-                <article class="bg-white rounded shadow p-4">
+                <article class="bg-white rounded shadow p-4 transition duration-300 hover:shadow-lg transform hover:-translate-y-1">
                     <h3 class="font-semibold"><?php echo e($proj['name']); ?></h3>
                     <p class="text-sm text-gray-600 mt-2"><?php echo e(substr($proj['description'],0,120)); ?>...</p>
                     <div class="mt-3">
                         <div class="w-full bg-gray-200 rounded h-3 overflow-hidden">
-                            <div class="bg-green-500 h-3" style="width: <?php echo $pct; ?>%"></div>
+                            <div class="bg-green-500 h-3 transition-all duration-500" style="width: <?php echo $pct; ?>%"></div>
                         </div>
                         <div class="flex justify-between text-xs text-gray-600 mt-1">
                             <span><?php echo $pct; ?>% funded</span>
@@ -81,7 +81,7 @@ include __DIR__ . '/header.php';
                         </div>
                     </div>
                     <div class="mt-3">
-                        <button onclick="openDonateModal(<?php echo e($proj['id']); ?>, '<?php echo e($proj['name']); ?>')" class="inline-block bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition">
+                        <button onclick="openDonateModal(<?php echo e($proj['id']); ?>, '<?php echo e($proj['name']); ?>')" class="inline-block bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition duration-300 transform hover:scale-110">
                             <i class="bi bi-heart"></i> Donate
                         </button>
                     </div>
@@ -90,14 +90,14 @@ include __DIR__ . '/header.php';
             </div>
         </section>
 
-        <section id="members" data-reveal>
+        <section id="members">
             <h2 class="text-2xl font-semibold mb-4 text-center">Our Members</h2>
             <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <?php foreach (array_slice($members,0,8) as $m): ?>
-                    <div class="bg-white p-4 rounded shadow text-center">
-                        <div class="h-36 w-36 mx-auto mb-3 bg-gray-100 rounded-full overflow-hidden">
+                    <div class="bg-white p-4 rounded shadow text-center transition duration-300 hover:shadow-lg transform hover:-translate-y-1">
+                        <div class="h-36 w-36 mx-auto mb-3 bg-gray-100 rounded-full overflow-hidden transition duration-300 hover:scale-110">
                             <?php if (!empty($m['image'])): ?>
-                                <img src="<?php echo base_url('uploads/' . $m['image']); ?>" class="w-full h-full object-cover">
+                                <img src="<?php echo base_url('uploads/' . $m['image']); ?>" class="w-full h-full object-cover transition duration-300">
                             <?php else: ?>
                                 <div class="flex items-center justify-center h-full text-gray-400">No image</div>
                             <?php endif; ?>

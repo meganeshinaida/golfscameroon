@@ -89,90 +89,90 @@ try {
 
 <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 mb-6">
     <!-- Projects Card -->
-    <div class="bg-white p-4 sm:p-6 rounded-lg shadow hover:shadow-lg transition">
+    <div class="admin-card bg-white p-4 sm:p-6 rounded-lg shadow">
         <div class="flex items-start justify-between">
             <div>
                 <p class="text-sm text-gray-600">Projects</p>
                 <p class="text-3xl font-bold text-green-700"><?php echo e($counts['projects']); ?></p>
                 <p class="text-xs text-gray-500 mt-2">+<?php echo e($projectsLast7); ?> this week</p>
             </div>
-            <div class="bg-green-100 p-3 rounded-full">
+            <div class="bg-green-100 p-3 rounded-full transition duration-300">
                 <i class="bi bi-bullseye text-2xl text-green-700"></i>
             </div>
         </div>
     </div>
 
     <!-- Members Card -->
-    <div class="bg-white p-4 sm:p-6 rounded-lg shadow hover:shadow-lg transition">
+    <div class="admin-card bg-white p-4 sm:p-6 rounded-lg shadow">
         <div class="flex items-start justify-between">
             <div>
                 <p class="text-sm text-gray-600">Members</p>
                 <p class="text-3xl font-bold text-blue-700"><?php echo e($counts['members']); ?></p>
                 <p class="text-xs text-gray-500 mt-2">+<?php echo e($membersLast7); ?> this week</p>
             </div>
-            <div class="bg-blue-100 p-3 rounded-full">
+            <div class="bg-blue-100 p-3 rounded-full transition duration-300">
                 <i class="bi bi-people text-2xl text-blue-700"></i>
             </div>
         </div>
     </div>
 
     <!-- Donors Card -->
-    <div class="bg-white p-4 sm:p-6 rounded-lg shadow hover:shadow-lg transition">
+    <div class="admin-card bg-white p-4 sm:p-6 rounded-lg shadow">
         <div class="flex items-start justify-between">
             <div>
                 <p class="text-sm text-gray-600">Donors</p>
                 <p class="text-3xl font-bold text-purple-700"><?php echo e($counts['donors']); ?></p>
                 <p class="text-xs text-gray-500 mt-2">Active supporters</p>
             </div>
-            <div class="bg-purple-100 p-3 rounded-full">
+            <div class="bg-purple-100 p-3 rounded-full transition duration-300">
                 <i class="bi bi-heart text-2xl text-purple-700"></i>
             </div>
         </div>
     </div>
 
     <!-- Donations Card -->
-    <div class="bg-white p-4 sm:p-6 rounded-lg shadow hover:shadow-lg transition">
+    <div class="admin-card bg-white p-4 sm:p-6 rounded-lg shadow">
         <div class="flex items-start justify-between">
             <div>
                 <p class="text-sm text-gray-600">Donations</p>
                 <p class="text-3xl font-bold text-orange-700"><?php echo e($counts['donations']); ?></p>
                 <p class="text-xs text-gray-500 mt-2">+<?php echo e($donationsLast7); ?> this week</p>
             </div>
-            <div class="bg-orange-100 p-3 rounded-full">
+            <div class="bg-orange-100 p-3 rounded-full transition duration-300">
                 <i class="bi bi-currency-dollar text-2xl text-orange-700"></i>
             </div>
         </div>
     </div>
 
     <!-- Blog Posts Card -->
-    <div class="bg-white p-4 sm:p-6 rounded-lg shadow hover:shadow-lg transition">
+    <div class="admin-card bg-white p-4 sm:p-6 rounded-lg shadow">
         <div class="flex items-start justify-between">
             <div>
                 <p class="text-sm text-gray-600">Blog Posts</p>
                 <p class="text-3xl font-bold text-red-700"><?php echo e($counts['blogs']); ?></p>
                 <p class="text-xs text-gray-500 mt-2">Content published</p>
             </div>
-            <div class="bg-red-100 p-3 rounded-full">
+            <div class="bg-red-100 p-3 rounded-full transition duration-300">
                 <i class="bi bi-file-text text-2xl text-red-700"></i>
             </div>
         </div>
     </div>
 </section>
-<section class="mt-6 bg-white p-4 sm:p-6 rounded-lg shadow">
+<section class="admin-card mt-6 bg-white p-4 sm:p-6 rounded-lg shadow">
     <h2 class="text-xl font-semibold mb-4 text-gray-800"><i class="bi bi-graph-up"></i> Monthly Donation Trend (Last 12 Months)</h2>
     <div class="relative h-64 sm:h-80 lg:h-96 mb-5">
         <canvas id="donationsChart"></canvas>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-        <div class="bg-green-50 p-4 rounded border border-green-200">
+        <div class="admin-card bg-green-50 p-4 rounded border border-green-200">
             <p class="text-sm text-gray-600">Total Revenue</p>
             <p class="text-2xl font-bold text-green-700"><?php echo format_currency($totalAmount, $currency); ?></p>
         </div>
-        <div class="bg-blue-50 p-4 rounded border border-blue-200">
+        <div class="admin-card bg-blue-50 p-4 rounded border border-blue-200">
             <p class="text-sm text-gray-600">Average Monthly</p>
             <p class="text-2xl font-bold text-blue-700"><?php echo format_currency($avgAmount, $currency); ?></p>
         </div>
-        <div class="bg-purple-50 p-4 rounded border border-purple-200">
+        <div class="admin-card bg-purple-50 p-4 rounded border border-purple-200">
             <p class="text-sm text-gray-600">Peak Month</p>
             <p class="text-2xl font-bold text-purple-700"><?php echo format_currency($peakAmount, $currency); ?></p>
         </div>
@@ -182,21 +182,21 @@ try {
 <!-- Visitor Analytics -->
 <section class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-6 pt-8 sm:pt-12">
     <!-- Total Visitors -->
-    <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
+    <div class="admin-card bg-white p-4 sm:p-6 rounded-lg shadow">
         <h3 class="text-sm text-gray-600 mb-2">Total Visitors (All Time)</h3>
         <p class="text-3xl font-bold text-indigo-700"><?php echo e(number_format($totalVisitors)); ?></p>
         <p class="text-xs text-gray-500 mt-2">Unique page visits tracked</p>
     </div>
 
     <!-- Today's Visitors -->
-    <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
+    <div class="admin-card bg-white p-4 sm:p-6 rounded-lg shadow">
         <h3 class="text-sm text-gray-600 mb-2">Today's Visitors</h3>
         <p class="text-3xl font-bold text-teal-700"><?php echo e(number_format($todayVisitors)); ?></p>
         <p class="text-xs text-gray-500 mt-2"><?php echo e(date('M d, Y')); ?></p>
     </div>
 
     <!-- Top Page -->
-    <div class="bg-white p-4 sm:p-6 rounded-lg shadow">
+    <div class="admin-card bg-white p-4 sm:p-6 rounded-lg shadow">
         <h3 class="text-sm text-gray-600 mb-2">Most Visited Page</h3>
         <?php if (!empty($topPages)): ?>
             <p class="text-2xl font-bold text-cyan-700 truncate"><?php echo e(ucfirst(str_replace('_', ' ', $topPages[0]['page']))); ?></p>
@@ -209,11 +209,11 @@ try {
 
 <!-- Top Pages List -->
 <?php if (!empty($topPages)): ?>
-<section class="mb-6 bg-white p-4 sm:p-6 rounded-lg shadow">
+<section class="admin-card mb-6 bg-white p-4 sm:p-6 rounded-lg shadow">
     <h3 class="text-lg font-semibold mb-4 text-gray-800"><i class="bi bi-graph-up"></i> Top Pages (Last 30 Days)</h3>
     <div class="space-y-2">
         <?php foreach ($topPages as $idx => $pg): ?>
-            <div class="flex items-center justify-between pb-2 border-b border-gray-100">
+            <div class="flex items-center justify-between pb-2 border-b border-gray-100 transition duration-200 hover:bg-gray-50 px-2 rounded">
                 <div class="flex items-center gap-3">
                     <span class="inline-block bg-green-100 text-green-700 text-sm font-bold px-3 py-1 rounded-full w-8 h-8 flex items-center justify-center"><?php echo ($idx + 1); ?></span>
                     <span class="text-gray-700"><?php echo e(ucfirst(str_replace('_', ' ', $pg['page']))); ?></span>
@@ -226,7 +226,7 @@ try {
 <?php endif; ?>
 
 <!-- Contact Submissions -->
-<section class="mb-6 bg-white p-4 sm:p-6 rounded-lg shadow">
+<section class="admin-card mb-6 bg-white p-4 sm:p-6 rounded-lg shadow">
     <h3 class="text-lg font-semibold mb-4 text-gray-800"><i class="bi bi-envelope"></i> Contact Submissions</h3>
     <?php if (empty($contactMessages)): ?>
         <p class="text-gray-500">No contact submissions yet.</p>
@@ -243,7 +243,7 @@ try {
                 </thead>
                 <tbody>
                     <?php foreach ($contactMessages as $msg): ?>
-                        <tr class="border-b border-gray-100 align-top">
+                        <tr class="border-b border-gray-100 align-top transition duration-200 hover:bg-gray-50">
                             <td class="py-3 pr-4 font-medium text-gray-800"><?php echo e($msg['name']); ?></td>
                             <td class="py-3 pr-4 text-gray-700"><?php echo e($msg['email']); ?></td>
                             <td class="py-3 pr-4 text-gray-700">
