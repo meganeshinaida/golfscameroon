@@ -55,7 +55,25 @@ function nav_link_class($route, $is_mobile = false) {
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="<?php echo e(get_setting('site_description', 'Empowering youth through education and community projects')); ?>">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<<<<<<< HEAD
   <script src="<?php echo asset_url('assets/app.js'); ?>" defer></script>
+=======
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: '#00BF62',
+        }
+      }
+    }
+  }
+</script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="<?php echo asset_url('assets/app.js'); ?>" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+>>>>>>> master
   <title><?php echo isset($page_title) ? e($page_title) . ' - ' . e($site_name) : e($site_name); ?></title>
 </head>
 <body class="bg-white text-gray-800">

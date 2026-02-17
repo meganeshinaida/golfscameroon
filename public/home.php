@@ -35,15 +35,22 @@ include __DIR__ . '/header.php';
                     <a href="<?php echo base_url('members'); ?>" class="border border-green-600 text-green-700 px-5 py-3 rounded-lg hover:bg-green-50 transition font-medium">Join Us</a>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="w-full md:w-1/2" data-reveal>
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg">
                     <img src="<?php echo asset_url('assets/hero-placeholder.jpg'); ?>" alt="Youth program" class="w-full h-64 object-cover">
+=======
+            <div class="w-full md:w-1/2 rotate-y-90" data-reveal>
+                <div class="bg-white  overflow-hidden shadow-lg w-[250px] h-[200px] p-4 ">
+                    <img src="<?php echo asset_url('uploads/heroImage.png'); ?>" alt="Youth program" class="w-full object-center ">
+>>>>>>> master
                 </div>
             </div>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto p-6 space-y-12">
+<<<<<<< HEAD
         <section id="services" class="grid md:grid-cols-3 gap-6" data-reveal>
             <div class="bg-white p-6 rounded shadow text-center">
                 <h3 class="font-semibold text-lg">Community Assistance</h3>
@@ -59,6 +66,68 @@ include __DIR__ . '/header.php';
             </div>
         </section>
 
+=======
+        <section id="services" class="py-8" data-reveal>
+            <h1 class="text-2xl md:text-3xl font-bold text-center mx-8">The Future Begins With Our Youth</h1>
+            <div class="grid md:grid-cols-3 gap-6 my-12" >
+                <div class="text-left">
+                <h3 class="font-bold text-2xl px-2">Who?</h3>
+                <img src="<?php echo asset_url('uploads/vector.png'); ?>" alt="green line" class="w-20">
+                <p class="mt-2 text-sm text-gray-600">The Golfs Cameroon is a youth-focused organization committed to raising future leaders, professionals, and entrepreneurs. We align our work with the United Nations Sustainable Development Goals to drive meaningful, lasting change.</p>
+            </div>
+            <div class="text-left">
+                <h3 class="font-bold text-2xl px-2">What?</h3>
+                <img src="<?php echo asset_url('uploads/vector.png'); ?>" alt="green line" class="w-20">
+                <p class="mt-2 text-sm text-gray-600">We empower young people through education support, mentorship, leadership engagement, and community outreach. From school visits to community support initiatives, we inspire responsibility, hard work, and positive impact.</p>
+            </div>
+            <div class="text-left">
+                <h3 class="font-bold text-2xl px-2">Where?</h3>
+                <img src="<?php echo asset_url('uploads/vector.png'); ?>" alt="green line" class="w-20">
+                <p class="mt-2 text-sm text-gray-600">Registered in Cameroon, we operate locally and internationally. Our work extends across Cameroon, Liberia, and Equatorial Guinea as we build a growing network of changemakers.</p>
+            </div>
+            </div>
+        </section>
+       <section id="initiative" class="py-8 bg-brand text-white grid md:grid-cols-2 gap-6 mb-12 py-8 " data-reveal>
+            
+            <div class="bg-white w-[710px] h-[544px] shadow-lg p-4" data-reveal>
+                <img src="<?php echo asset_url('uploads/initiative.jpg'); ?>" alt="initiative" class="w-full object-cover ">
+            </div>
+            
+            <article class="text-left">
+                <h2 class="text-2xl md:text-3xl font-semibold text-green-700 mb-4">Cameroon Youth Leadership Initiative</h2>
+                <p class="mt-4 text-lg text-gray-700  max-w-2xl mx-auto mb-2">Young people across Cameroon need opportunities to grow as future leaders, entrepreneurs, and changemakers.
+               Through mentorship programs, school awards, and community workshops, we equip youth with the skills, confidence, and guidance to drive positive change in their communities.</p>
+            <button><a href="<?php echo base_url('members'); ?>" class="inline-block bg-red-700 text-white px-4 py-2 mt-4 transition font-medium">
+             Join the Movement!
+            </a></button>
+           </article>
+            
+        </section>
+        <section  class="py-8" data-reveal>
+            <h1 class="text-2xl md:text-3xl font-bold text-center mx-8">We're not stopping here</h1>
+            <div class="grid md:grid-cols-3 gap-10 my-12" >
+                <article>
+                    <h2 class="font-bold text-green-700 text-center text-4xl">51%</h2>
+               <p class="text-sm text-gray-600 mt-2 text-center">
+                of young people in underserved communities still lack equal access to quality educational and leadership opportunities. When youth are held back, communities fall behind. 
+               </p>
+                </article>
+                <article>
+                    <h2 class="font-bold text-green-700 text-center text-4xl">1 in 7</h2>
+               <p class="text-sm text-gray-600 mt-2 text-center">
+                youths lacks the support system needed to develop their talents and skills. Our mission is to bridge that gap and prepare young people to shape the future.
+               </p>
+                </article>
+                 <article>
+                    <h2 class="font-bold text-green-700 text-center text-4xl">50%</h2>
+               <p class="text-sm text-gray-600 mt-2 text-center">
+               of young people complete school each year without access to career guidance or practical leadership training. education alone is not enough without direction and opportunity. 
+               </p>
+                </article>
+               
+            </div>
+        </section>
+>>>>>>> master
         <section id="top-projects" data-reveal>
             <div class="flex flex-col items-center justify-center mb-4 text-center">
                 <h2 class="text-2xl font-semibold">Featured Projects</h2>
@@ -135,6 +204,11 @@ include __DIR__ . '/header.php';
                 <div class="bg-white p-6 rounded shadow text-center">"We partnered with Golfs Cameroon for local outreach." — Partner Org</div>
             </div>
         </section>
+<<<<<<< HEAD
+=======
+    
+    
+>>>>>>> master
     </main>
 
   <!-- Donation Modal -->
