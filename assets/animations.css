@@ -37,7 +37,8 @@
 
 /* Pulse Animation for Notifications */
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -66,7 +67,9 @@ select {
 /* Navigation link transitions */
 nav a {
   position: relative;
-  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+  transition:
+    color 0.3s ease-in-out,
+    text-shadow 0.3s ease-in-out;
 }
 
 nav a:hover {
@@ -123,7 +126,9 @@ tbody tr:hover {
 
 /* Icon animations */
 i {
-  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    color 0.3s ease-in-out;
 }
 
 button:hover i,
@@ -143,7 +148,7 @@ a.nav-link {
 }
 
 a.nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -246,4 +251,248 @@ html {
 
 .bounce {
   animation: bounce 2s infinite;
+}
+
+rotate div
+.rotate-div {
+  transform: rotate(45deg); /* rotates 15 degrees clockwise */
+}
+
+/* Enhanced Component Animations */
+
+/* Underline expansion animation for stats and features */
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Chevron slide animation */
+@keyframes slideChevron {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(4px);
+  }
+}
+
+/* Image zoom animation for cards */
+@keyframes zoomImage {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+/* Card lift animation */
+@keyframes cardLift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+/* Smooth color transition */
+@keyframes colorTransition {
+  from {
+    color: rgb(34, 197, 94); /* green-600 */
+  }
+  to {
+    color: rgb(220, 38, 38); /* red-600 */
+  }
+}
+
+/* Background gradient shift */
+@keyframes gradientShift {
+  from {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+  }
+  to {
+    background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%);
+  }
+}
+
+/* Component-specific animation utilities */
+.animate-expand-width {
+  animation: expandWidth 0.4s ease-out forwards;
+}
+
+.animate-slide-chevron {
+  animation: slideChevron 0.3s ease-out forwards;
+}
+
+.animate-zoom-image {
+  animation: zoomImage 0.3s ease-out forwards;
+}
+
+.animate-card-lift {
+  animation: cardLift 0.3s ease-out forwards;
+}
+
+/* Enhanced card styling with animations */
+.card-interactive {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-interactive:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Service card specific animations */
+.service-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.service-card-image {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover .service-card-image {
+  transform: scale(1.1);
+}
+
+/* Focus area animations */
+.focus-area-image {
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s ease;
+}
+
+.focus-area-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.focus-area-title {
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.focus-area-item {
+  transition:
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s ease;
+}
+
+.focus-area-item:hover {
+  transform: translateX(8px);
+  color: rgb(220, 38, 38); /* red-600 */
+}
+
+/* Stat card animations */
+.stat-card {
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+.stat-underline {
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Feature card animations */
+.feature-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+.feature-card-underline {
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    rgb(34, 197, 94) 0%,
+    rgb(16, 185, 129) 100%
+  );
+}
+
+/* Involvement card animations */
+.involvement-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.involvement-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.involvement-card-image {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.involvement-card:hover .involvement-card-image {
+  transform: scale(1.1);
+}
+
+.involvement-card-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.involvement-card-button:hover {
+  background-color: rgb(127, 29, 29);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon animations for chevron and other icons */
+.icon-chevron {
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.icon-animated:hover {
+  transform: translate(4px, 0);
+  color: rgb(220, 38, 38); /* red-600 */
+}
+
+/* Text color transitions */
+.text-transition {
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Gradient text animation */
+.gradient-text-animated {
+  background: linear-gradient(
+    90deg,
+    rgb(34, 197, 94) 0%,
+    rgb(16, 185, 129) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+.gradient-text-animated:hover {
+  background: linear-gradient(
+    90deg,
+    rgb(220, 38, 38) 0%,
+    rgb(239, 68, 68) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

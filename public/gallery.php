@@ -26,7 +26,7 @@ include __DIR__ . '/header.php';
             $imgSrc = file_exists($thumbPath) ? $thumb : ('uploads/gallery/' . $g['image']);
           ?>
           <div class="bg-white rounded shadow overflow-hidden">
-            <img src="<?php echo base_url($imgSrc); ?>" alt="<?php echo e($g['title'] ?? 'Gallery image'); ?>" class="w-full h-56 object-cover">
+            <img src="<?php echo base_url($imgSrc); ?>" alt="<?php echo e($g['title'] ?? 'Gallery image'); ?>" class="w-full h-56 object-cover object-contain">
             <?php if (!empty($g['title'])): ?>
               <div class="p-3 text-center text-sm font-medium text-gray-700"><?php echo e($g['title']); ?></div>
             <?php endif; ?>

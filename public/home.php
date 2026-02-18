@@ -2,6 +2,8 @@
 require_once __DIR__ . '/../models/Project.php';
 require_once __DIR__ . '/../models/Member.php';
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../config/components.php';
+require_once __DIR__ . '/../config/data.php';
 
 $dbProjects = (new Project())->all();
 $members = (new Member())->all();
@@ -35,8 +37,8 @@ include __DIR__ . '/header.php';
                     <a href="<?php echo base_url('members'); ?>" class="border border-green-600 text-green-700 px-5 py-3 rounded-lg hover:bg-green-50 transition font-medium">Join Us</a>
                 </div>
             </div>
-            <div class="w-full md:w-1/2 rotate-y-90" data-reveal>
-                <div class="bg-white  overflow-hidden shadow-lg transform rotate-x-15 w-[200px] p-4 ">
+            <div class="w-full md:w-1/2 v" data-reveal>
+                <div class="bg-white  overflow-hidden shadow-lg transform rotate-15 w-[200px] p-4 ">
                     <img src="<?php echo asset_url('uploads/heroImage.png'); ?>" alt="Youth program" class=" object-center ">
                 </div>
             </div>
@@ -44,26 +46,10 @@ include __DIR__ . '/header.php';
     </header>
 
     <main class="max-w-6xl mx-auto p-6 ">
-        <!-- section The Future Begins With Our Yout -->
+        <!-- section The Future Begins With Our Youth -->
         <section id="services" class="py-8 my-[2vw]" data-reveal>
             <h1 class="text-2xl md:text-3xl font-bold text-center mx-8">The Future Begins With Our Youth</h1>
-            <div class="grid md:grid-cols-3 gap-6 my-12" >
-                <div class="text-left">
-                <h3 class="font-bold text-2xl px-2">Who?</h3>
-                <img src="<?php echo asset_url('uploads/vector.png'); ?>" alt="green line" class="w-20">
-                <p class="mt-2 text-sm text-gray-600">The Golfs Cameroon is a youth-focused organization committed to raising future leaders, professionals, and entrepreneurs. We align our work with the United Nations Sustainable Development Goals to drive meaningful, lasting change.</p>
-            </div>
-            <div class="text-left">
-                <h3 class="font-bold text-2xl px-2">What?</h3>
-                <img src="<?php echo asset_url('uploads/vector.png'); ?>" alt="green line" class="w-20">
-                <p class="mt-2 text-sm text-gray-600">We empower young people through education support, mentorship, leadership engagement, and community outreach. From school visits to community support initiatives, we inspire responsibility, hard work, and positive impact.</p>
-            </div>
-            <div class="text-left">
-                <h3 class="font-bold text-2xl px-2">Where?</h3>
-                <img src="<?php echo asset_url('uploads/vector.png'); ?>" alt="green line" class="w-20">
-                <p class="mt-2 text-sm text-gray-600">Registered in Cameroon, we operate locally and internationally. Our work extends across Cameroon, Liberia, and Equatorial Guinea as we build a growing network of changemakers.</p>
-            </div>
-            </div>
+            <?php render_info_cards(get_info_cards()); ?>
         </section>
         <!-- section Cameroon Youth Leadership Initiative -->
        <section id="initiative" class="py-8 bg-brand text-white grid md:grid-cols-2 gap-6 mb-12 py-8 " data-reveal>
@@ -85,65 +71,28 @@ include __DIR__ . '/header.php';
         <section  class="py-8" data-reveal>
             <h1 class="text-2xl md:text-3xl font-bold text-center mx-8">We're not stopping here</h1>
             <div class="grid md:grid-cols-3 gap-10 my-12" >
-                <article>
-                    <h2 class="font-bold text-green-700 text-center text-4xl">51%</h2>
-               <p class="text-sm text-gray-600 mt-2 text-center">
-                of young people in underserved communities still lack equal access to quality educational and leadership opportunities. When youth are held back, communities fall behind. 
-               </p>
-                </article>
-                <article>
-                    <h2 class="font-bold text-green-700 text-center text-4xl">1 in 7</h2>
-               <p class="text-sm text-gray-600 mt-2 text-center">
-                youths lacks the support system needed to develop their talents and skills. Our mission is to bridge that gap and prepare young people to shape the future.
-               </p>
-                </article>
-                 <article>
-                    <h2 class="font-bold text-green-700 text-center text-4xl">50%</h2>
-               <p class="text-sm text-gray-600 mt-2 text-center">
-               of young people complete school each year without access to career guidance or practical leadership training. education alone is not enough without direction and opportunity. 
-               </p>
-                </article>
-               
+                <?php foreach (get_statistics() as $stat): ?>
+                    <?php render_stat_card($stat); ?>
+                <?php endforeach; ?>
             </div>
         </section>
         <section id="top-projects" data-reveal>
             <h1 class="text-2xl md:text-3xl font-bold text-center mx-8">Our work</h1>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 my-12" >
-            <div class="bg-white rounded shadow shadow-sm   overflow-hidden  " data-reveal>
-                <img src="<?php echo asset_url('uploads/leadership.jpg'); ?>" alt="leadership" class="h-2/3 w-full object-cover">
-                <div class="px-2 ">
-                <h3 class="font-semibold text-xl text-green-700 flex justify-between"> <span> Leadership Development</span> <i class="bi bi-chevron-right text-green-700 "></i></h3>
-                <p class="text-sm text-gray-600 mt-2  mx-2 ">Mentorship, coaching, and youth leadership engagement programs designed to raise confident and purpose-driven changemakers.</p>
-                </div>
-                
-            </div>
-            <div class="bg-white rounded shadow shadow-sm   overflow-hidden" data-reveal>
-                <img src="<?php echo asset_url('uploads/school_engagement.jpg'); ?>" alt="school_engagement" class="h-2/3  w-full object-cover ">
-                <div class="px-2">
-                <h3 class="font-semibold text-xl text-green-700 flex justify-between"> <span> Education & School Engagemen</span><i class="bi bi-chevron-right text-green-700 "></i></h3>
-                <p class="text-sm text-gray-600  mt-2  mx-2 ">School visits, student recognition, and academic empowerment initiatives that promote discipline, excellence, and growth..</p>
-                </div>
-                
-            </div>
-            <div class="bg-white rounded shadow shadow-sm   overflow-hidden" data-reveal>
-                <img src="<?php echo asset_url('uploads/community_outreach.png'); ?>" alt="community_outreach" class="h-2/3  w-full object-cover ">
-                <div class="px-2">
-                <h3 class="font-semibold text-xl text-green-700 flex justify-between"> <span> Community Outreach</span> <i class="bi bi-chevron-right text-green-700 "></i></h3>
-                <p class="text-sm text-gray-600  mt-2  mx-2 ">Community support initiatives and social impact activities that strengthen underserved areas and promote collective development.</p>
-                </div>
-                
-            </div>
-            <div class="bg-white rounded shadow shadow-sm   overflow-hidden" data-reveal>
-                <img src="<?php echo asset_url('uploads/global_patnership.jpg'); ?>" alt="global_partnership" class="h-2/3  w-full object-cover ">
-                <div class="px-2">
-                <h3 class="font-semibold text-xl text-green-700  flex justify-between"> <span> Global Partnerships</span> <i class="bi bi-chevron-right text-green-700 "></i></h3>
-                <p class="text-sm text-gray-600 mt-2  mx-2 ">International collaborations and cross-border youth engagement across Cameroon, Liberia, and Equatorial Guinea.</p>
-                </div>
-                
-            </div>
+                <?php foreach (get_service_cards() as $service): ?>
+                    <?php render_service_card($service); ?>
+                <?php endforeach; ?>
             </div>
         </section>
-          <section id="get involved" data-reveal>
+          <!-- <section id="get involved" data-reveal>
+            <h1 class="text-green-700 text-2xl md:text-3xl font-semibold text-center mx-8 capitalize">ways to get involved</h1>
+            <div class="grid grid-cols-2 gap-10 my-12" >
+                <?php foreach (get_involvement_options() as $option): ?>
+                    <?php render_involvement_card($option); ?>
+                <?php endforeach; ?>
+            </div>
+        </section> -->
+        <section id="get involved" data-reveal>
             <h1 class="text-green-700 text-2xl md:text-3xl font-semibold text-center mx-8 capitalize">ways to get involved</h1>
             <div class="grid grid-cols-2 gap-10 my-12" >
             <div class=" flex justify-between gap-8 bg-white shadow shadow-sm   overflow-hidden p-1 " data-reveal>

@@ -16,14 +16,14 @@ include __DIR__ . '/header.php';
         <div class="bg-white rounded shadow text-center">
           <div class="h-40 bg-gray-100 rounded mb-4 flex items-center justify-center overflow-hidden h-2/3  ">
               <?php if (!empty($m['image'])): ?>
-              <img src="<?php echo base_url('uploads/' . $m['image']); ?>" alt="<?php echo e($m['name']); ?>" class="object-cover bg-cover bg-center h-full w-full">
+              <img src="<?php echo base_url('uploads/' . $m['image']); ?>" alt="<?php echo e($m['name']); ?>" class="object-cover bg-cover bg-center h-full w-full object-contain">
             <?php else: ?>
               <span class="text-gray-400">No image</span>
             <?php endif; ?>
           </div>
-          <h3 class="font-semibold text-lg"><?php echo e($m['name']); ?></h3>
-          <p class="text-sm text-gray-600"><?php echo e($m['role']); ?></p>
-          <p class="mt-2 text-sm text-gray-700"><?php echo e(substr($m['bio'],0,120)); ?>...</p>
+          <h3 class="font-bold text-xl capitalize text-green-700"><?php echo e($m['name']); ?></h3>
+          <p class="text-lg text-gray-600 capitalize mt"><?php echo e($m['role']); ?></p>
+          <p class="mt-2 text-lg text-gray-700 capitalize"><?php echo e(substr($m['bio'],0,120)); ?>...</p>
         </div>
       <?php endforeach; ?>
     </div>
