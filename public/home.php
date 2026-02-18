@@ -23,7 +23,7 @@ function project_progress($db, $project_id, $target) {
 $page_title = 'Home';
 include __DIR__ . '/header.php';
 ?>
-    <header class="bg-white border-b border-gray-200">
+    <header class="bg-white  border-gray-200">
         <div class="max-w-6xl mx-auto p-8 md:p-16 flex flex-col md:flex-row items-center gap-8">
             <div class="flex-1 text-center" data-reveal>
                 <h1 class="text-3xl md:text-5xl font-extrabold leading-tight text-green-700">Empowering Cameroon&apos;s Youth through Education & Opportunity</h1>
@@ -36,15 +36,16 @@ include __DIR__ . '/header.php';
                 </div>
             </div>
             <div class="w-full md:w-1/2 rotate-y-90" data-reveal>
-                <div class="bg-white  overflow-hidden shadow-lg w-[250px] h-[200px] p-4 ">
-                    <img src="<?php echo asset_url('uploads/heroImage.png'); ?>" alt="Youth program" class="w-full object-center ">
+                <div class="bg-white  overflow-hidden shadow-lg transform rotate-x-15 w-[200px] p-4 ">
+                    <img src="<?php echo asset_url('uploads/heroImage.png'); ?>" alt="Youth program" class=" object-center ">
                 </div>
             </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto p-6 space-y-12">
-        <section id="services" class="py-8" data-reveal>
+    <main class="max-w-6xl mx-auto p-6 ">
+        <!-- section The Future Begins With Our Yout -->
+        <section id="services" class="py-8 my-[2vw]" data-reveal>
             <h1 class="text-2xl md:text-3xl font-bold text-center mx-8">The Future Begins With Our Youth</h1>
             <div class="grid md:grid-cols-3 gap-6 my-12" >
                 <div class="text-left">
@@ -64,6 +65,7 @@ include __DIR__ . '/header.php';
             </div>
             </div>
         </section>
+        <!-- section Cameroon Youth Leadership Initiative -->
        <section id="initiative" class="py-8 bg-brand text-white grid md:grid-cols-2 gap-6 mb-12 py-8 " data-reveal>
             
             <div class="bg-white w-[710px] h-[544px] shadow-lg p-4" data-reveal>
@@ -105,37 +107,152 @@ include __DIR__ . '/header.php';
             </div>
         </section>
         <section id="top-projects" data-reveal>
-            <div class="flex flex-col items-center justify-center mb-4 text-center">
-                <h2 class="text-2xl font-semibold">Featured Projects</h2>
-                <a href="<?php echo base_url('donations'); ?>" class="text-sm text-green-700 mt-1">See all projects →</a>
+            <h1 class="text-2xl md:text-3xl font-bold text-center mx-8">Our work</h1>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 my-12" >
+            <div class="bg-white rounded shadow shadow-sm   overflow-hidden  " data-reveal>
+                <img src="<?php echo asset_url('uploads/leadership.jpg'); ?>" alt="leadership" class="h-2/3 w-full object-cover">
+                <div class="px-2 ">
+                <h3 class="font-semibold text-xl text-green-700 flex justify-between"> <span> Leadership Development</span> <i class="bi bi-chevron-right text-green-700 "></i></h3>
+                <p class="text-sm text-gray-600 mt-2  mx-2 ">Mentorship, coaching, and youth leadership engagement programs designed to raise confident and purpose-driven changemakers.</p>
+                </div>
+                
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <?php foreach (array_slice($dbProjects,0,6) as $proj):
-                    list($raised,$pct) = project_progress($db, $proj['id'], $proj['target_amount']);
-                ?>
-                <article class="bg-white rounded shadow p-4">
-                    <h3 class="font-semibold"><?php echo e($proj['name']); ?></h3>
-                    <p class="text-sm text-gray-600 mt-2"><?php echo e(substr($proj['description'],0,120)); ?>...</p>
-                    <div class="mt-3">
-                        <div class="w-full bg-gray-200 rounded h-3 overflow-hidden">
-                            <div class="bg-green-500 h-3" style="width: <?php echo $pct; ?>%"></div>
-                        </div>
-                        <div class="flex justify-between text-xs text-gray-600 mt-1">
-                            <span><?php echo $pct; ?>% funded</span>
-                            <span><?php echo format_currency($raised); ?> raised</span>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <button onclick="openDonateModal(<?php echo e($proj['id']); ?>, '<?php echo e($proj['name']); ?>')" class="inline-block bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition">
-                            <i class="bi bi-heart"></i> Donate
-                        </button>
-                    </div>
-                </article>
-                <?php endforeach; ?>
+            <div class="bg-white rounded shadow shadow-sm   overflow-hidden" data-reveal>
+                <img src="<?php echo asset_url('uploads/school_engagement.jpg'); ?>" alt="school_engagement" class="h-2/3  w-full object-cover ">
+                <div class="px-2">
+                <h3 class="font-semibold text-xl text-green-700 flex justify-between"> <span> Education & School Engagemen</span><i class="bi bi-chevron-right text-green-700 "></i></h3>
+                <p class="text-sm text-gray-600  mt-2  mx-2 ">School visits, student recognition, and academic empowerment initiatives that promote discipline, excellence, and growth..</p>
+                </div>
+                
+            </div>
+            <div class="bg-white rounded shadow shadow-sm   overflow-hidden" data-reveal>
+                <img src="<?php echo asset_url('uploads/community_outreach.png'); ?>" alt="community_outreach" class="h-2/3  w-full object-cover ">
+                <div class="px-2">
+                <h3 class="font-semibold text-xl text-green-700 flex justify-between"> <span> Community Outreach</span> <i class="bi bi-chevron-right text-green-700 "></i></h3>
+                <p class="text-sm text-gray-600  mt-2  mx-2 ">Community support initiatives and social impact activities that strengthen underserved areas and promote collective development.</p>
+                </div>
+                
+            </div>
+            <div class="bg-white rounded shadow shadow-sm   overflow-hidden" data-reveal>
+                <img src="<?php echo asset_url('uploads/global_patnership.jpg'); ?>" alt="global_partnership" class="h-2/3  w-full object-cover ">
+                <div class="px-2">
+                <h3 class="font-semibold text-xl text-green-700  flex justify-between"> <span> Global Partnerships</span> <i class="bi bi-chevron-right text-green-700 "></i></h3>
+                <p class="text-sm text-gray-600 mt-2  mx-2 ">International collaborations and cross-border youth engagement across Cameroon, Liberia, and Equatorial Guinea.</p>
+                </div>
+                
+            </div>
             </div>
         </section>
-
-        <section id="members" data-reveal>
+          <section id="get involved" data-reveal>
+            <h1 class="text-green-700 text-2xl md:text-3xl font-semibold text-center mx-8 capitalize">ways to get involved</h1>
+            <div class="grid grid-cols-2 gap-10 my-12" >
+            <div class=" flex justify-between gap-8 bg-white shadow shadow-sm   overflow-hidden p-1 " data-reveal>
+                <img src="<?php echo asset_url('uploads/leadership.jpg'); ?>" alt="leadership" class="w-1/2 object-cover ">
+                <div class="px-2 my-4">
+                <h3 class="font-semibold text-xl text-green-700">Become a Volunteer</h3>
+                <p class="text-sm text-gray-600 mt-2  mx-2 ">Mentorship, coaching, and youth leadership engagement programs designed to raise confident and purpose-driven changemakers.</p>
+                   <button><a href="<?php echo base_url('members'); ?>" class="inline-block bg-red-700 text-white px-4 py-2 mt-4 transition font-medium">
+             Join us
+               </a></button>
+                </div>
+                
+            </div>
+            <div class=" flex justify-between gap-8 bg-white shadow shadow-sm   overflow-hidden p-1 " data-reveal>
+                <img src="<?php echo asset_url('uploads/global_patnership.jpg'); ?>" alt="leadership" class="w-1/2 object-cover ">
+                <div class="px-2 my-4">
+                <h3 class="font-semibold text-xl text-green-700">Partner With Us</h3>
+                <p class="text-sm text-gray-600 mt-2  mx-2 ">Collaborate with us as an organization, institution, or corporate body. Together, we can expand opportunities for youth across borders.</p>
+                   <button><a href="<?php echo base_url('members'); ?>" class="inline-block bg-red-700 text-white px-4 py-2 mt-4 transition font-medium">
+             partner now
+               </a></button>
+                </div>
+                
+            </div>
+             <div class=" flex justify-between gap-8 bg-white shadow shadow-sm   overflow-hidden p-1 " data-reveal>
+                <img src="<?php echo asset_url('uploads/leadership.jpg'); ?>" alt="leadership" class="w-1/2 object-cover ">
+                <div class="px-2 my-4">
+                <h3 class="font-semibold text-xl text-green-700">Support the Missionr</h3>
+                <p class="text-sm text-gray-600 mt-2  mx-2 ">Contribute resources that help us run leadership programs and community outreach initiatives. Every contribution helps shape future changemakers.</p>
+                   <button><a href="<?php echo base_url('members'); ?>" class="inline-block bg-red-700 text-white px-4 py-2 mt-4 transition font-medium">
+           Support Now
+               </a></button>
+                </div>
+                
+            </div>
+             <div class=" flex justify-between gap-8 bg-white shadow shadow-sm   overflow-hidden  p-1" data-reveal>
+                <img src="<?php echo asset_url('uploads/leadership.jpg'); ?>" alt="leadership" class="w-1/2 object-cover ">
+                <div class="px-2 my-4">
+                <h3 class="font-semibold text-xl text-green-700">Join the Youth Network</h3>
+                <p class="text-sm text-gray-600 mt-2  mx-2 ">Are you a young leader or aspiring professional? Connect with a growing network of purpose-driven youth.</p>
+                   <button><a href="<?php echo base_url('members'); ?>" class="inline-block bg-red-700 text-white px-4 py-2 mt-4 transition font-medium">
+            Join the Network
+               </a></button>
+                </div>
+                
+            </div>
+            </div>
+        </section>
+        <section id="" class="   bg-brand text-white grid md:grid-cols-2 gap-6 justify-center items-center mb-12  py-8" data-reveal>
+            <div class="flex justify-center items-center">
+                <h2 class="text-3xl font-semibold text-green-700 mb-4 ">“Our youths are not the problem, they are the promise.”</h2>
+           
+            </div>
+                
+             <div class="bg-white w-[710px] h-[544px] shadow-lg p-4 transform translate-y-2" data-reveal>
+                <img src="<?php echo asset_url('uploads/initiative.jpg'); ?>" alt="initiative" class="w-full object-cover ">
+            </div>
+            
+        </section>
+        <section class="bg-[#639E82] py-8 mb-12" data-reveal>
+        <div class="flex justify-center items-center flex-col leading-[2] my-8 gap-1 text-center ">
+            <h2 class="font-semibold text-2xl text-green-700 tex-center uppercase">
+                We have the youth, the talent,<br> the drive
+            </h2>
+            <p class="text-sm text-gray-600 mt-2  mx-2 text-center">All we need is the opportunity</p>
+             <button><a href="<?php echo base_url('members'); ?>" class="inline-block bg-red-700 text-white px-4 py-2 mt-4 transition font-medium">
+        Donate today
+               </a></button>
+        </div>    
+        </section>
+        <section id="asked questions" class="py-8 my-[2vw]" data-reveal>
+            <h1 class="text-2xl md:text-4xl font-semibold text-center mx-8 text-green-700">Frequently asked questions</h1>
+            <div class="grid md:grid-cols-3 gap-6 my-12" >
+                <div class="text-left">
+                <h3 class="font-bold text-2xl  mb-4 text-green-700"> What about boys?</h3>
+                <p class="mt-2 text-sm text-gray-600">Whether you choose to sponsor a girl or a boy, you’ll help projects focused on equal opportunities for all children. We know girls are the most vulnerable and we ensure that boys play an important role in building secure communities that value girls.</p>
+            </div>
+             <div class="text-left">
+                <h3 class="font-bold text-2xl  mb-4 text-green-700"> Is sponsorship like adoption?</h3>
+                <p class="mt-2 text-sm text-gray-600">No, it's not. The girl you sponsor will
+                have a family of her own, but your words
+                of encouragement play an important role
+                for her and her community. Letter writing
+                also helps girls learn about other cultures
+                and improve their literacy skills.</p>
+            </div>
+            <div class="text-left">
+                <h3 class="font-bold text-2xl  mb-4 text-green-700">How can I get more
+                information?</h3>
+                <p class="mt-2 text-sm text-gray-600">Our Supporter Engagement team are
+                happy to answer any questions about
+                sponsorship and our work. You can
+                reach them on 0300 777 9779 or
+                supporterquestions@plan-uk.org.</p>
+            </div>
+            </div>
+            <div class="py-10 text-center">
+                <p class="text-lg text-green-700 text-center font-bold">More FAQs <i class="bi bi-chevron-right text-green-700  mx-2"></i></p>
+            </div>
+        </section>
+        <section id="why_choose_golf" class="py-8 my-[2vw] flex justify-center item-center " data-reveal>
+            <div class="flex flex-col  justify-center items-center w-2/3">
+                <h1 class="text-2xl md:text-3xl font-semibold text-center mx-8 text-green-700 uppercase">Why choose THE GOLFS CAMeroon?</h1>
+                <p class="mt-2 text-sm text-gray-600 ">We are a youth-focused organization striving to empower the next generation of leaders and changemakers. For years, we’ve worked alongside young people and their communities to ensure every youth can reach their full potential and every young person has access to guidance, mentorship, and opportunities. We bring people together to nurture talent, build skills, and create pathways to leadership, even in underserved areas.</p>
+        
+            </div>
+            
+        </section>
+        <!-- <section id="members" data-reveal>
             <h2 class="text-2xl font-semibold mb-4 text-center">Our Members</h2>
             <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <?php foreach (array_slice($members,0,8) as $m): ?>
@@ -152,40 +269,12 @@ include __DIR__ . '/header.php';
                     </div>
                 <?php endforeach; ?>
             </div>
-        </section>
-
-        <section id="impact" data-reveal>
-            <h2 class="text-2xl font-semibold mb-4 text-center">How We Change The World</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded shadow text-center">
-                    <h4 class="font-semibold">Education</h4>
-                    <p class="text-sm text-gray-600 mt-2">Scholarships and training programs that increase opportunities for youth.</p>
-                </div>
-                <div class="bg-white p-6 rounded shadow text-center">
-                    <h4 class="font-semibold">Mentorship</h4>
-                    <p class="text-sm text-gray-600 mt-2">Long-term mentoring relationships providing guidance and networks.</p>
-                </div>
-                <div class="bg-white p-6 rounded shadow text-center">
-                    <h4 class="font-semibold">Community</h4>
-                    <p class="text-sm text-gray-600 mt-2">Local initiatives that strengthen community resilience and wellbeing.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials" data-reveal>
-            <h2 class="text-2xl font-semibold mb-4 text-center">Testimonials</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded shadow text-center">"This program helped me get a scholarship." — A Beneficiary</div>
-                <div class="bg-white p-6 rounded shadow text-center">"Volunteering changed how I see community service." — Volunteer</div>
-                <div class="bg-white p-6 rounded shadow text-center">"We partnered with Golfs Cameroon for local outreach." — Partner Org</div>
-            </div>
-        </section>
-    
+        </section> -->
     
     </main>
 
   <!-- Donation Modal -->
-  <div id="donateModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <!-- <div id="donateModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
     <div class="bg-green-700 text-white p-6 flex justify-between items-center">
         <h2 class="text-xl font-bold">Make a Donation</h2>
@@ -232,7 +321,7 @@ include __DIR__ . '/header.php';
         </button>
       </form>
     </div>
-  </div>
+  </div> -->
 
 <?php include __DIR__ . '/footer.php'; ?>
     <script>
