@@ -1,5 +1,5 @@
 <?php $page_title = 'About'; include __DIR__ . '/header.php'; ?>
-  <header class="bg-white border-b border-gray-200 p-6">
+  <header class="bg-white border-b border-gray-200 p-6" style="background-image: linear-gradient(rgba(83, 80, 80, 0.7), rgba(0,0,0,0.6)), url('uploads/hands_smile.jpg') ">
     <div class="max-w-4xl mx-auto text-center">
       <h1 class="text-3xl font-bold text-green-700">Golfs Cameroon</h1>
       <p class="mt-2 text-gray-700">Empowering youth through education, mentorship and community projects.</p>

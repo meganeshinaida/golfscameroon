@@ -5,9 +5,9 @@ $blogModel = new Blog();
 $posts = $blogModel->all();
 include __DIR__ . '/header.php';
 ?>
-  <header class="bg-white border-b border-gray-200 p-6">
+  <header class="bg-white border-b border-gray-200 p-6" style="background-image: linear-gradient(rgba(64, 74, 63, 0.7), rgba(0,0,0,0.6)), url('uploads/hands_smile.jpg') ">
     <div class="max-w-6xl mx-auto text-center">
-      <h1 class="text-3xl font-bold text-green-700">News & Blog</h1>
+      <h1 class="text-3xl font-bold text-green-600">News & Blog</h1>
     </div>
   </header>
   <main class="max-w-6xl mx-auto p-6">
